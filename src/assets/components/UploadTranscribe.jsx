@@ -20,6 +20,16 @@ const UploadTranscribe = () => {
   const [maxLength, setMaxLength] = useState(1000);
 
   const onPrev = () => {
+    if (!selectedFile) {
+      alert("Please select a file first.");
+      return;
+    }
+
+    if (timeLine == "") {
+      alert("Please upload a file first");
+      return;
+    }
+
     if (position > 0) {
       const newTimeLine = calcTimeLine(position - 1);
       setTimeLine(newTimeLine);
@@ -29,6 +39,16 @@ const UploadTranscribe = () => {
   };
 
   const onNext = async () => {
+    if (!selectedFile) {
+      alert("Please select a file first.");
+      return;
+    }
+
+    if (timeLine == "") {
+      alert("Please upload a file first");
+      return;
+    }
+
     console.log("OnNext", position, textList.length);
     const newTimeLine = calcTimeLine(position + 1);
     setTimeLine(newTimeLine);
