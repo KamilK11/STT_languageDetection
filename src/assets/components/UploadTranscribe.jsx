@@ -6,8 +6,6 @@ import {
 } from "../../utils/fileUtils";
 import axios from "axios";
 
-const URL = "http://41.132.66.17:30911";
-
 const UploadTranscribe = () => {
   const [text, setText] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
@@ -18,6 +16,8 @@ const UploadTranscribe = () => {
   const [uploading, setUploading] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [maxLength, setMaxLength] = useState(1000);
+
+  const URL = import.meta.env.VITE_ML_API;
 
   const onPrev = () => {
     if (!selectedFile) {
