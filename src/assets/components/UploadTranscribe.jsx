@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   fileToBase64,
   generateUUID,
@@ -18,6 +18,14 @@ const UploadTranscribe = () => {
   const [maxLength, setMaxLength] = useState(1000);
 
   const URL = import.meta.env.VITE_ML_API;
+
+  useEffect(() => {
+    setText("");
+    setTextList([]);
+    setPosition(0);
+    setTimeLine("");
+    setMaxLength(1000);
+  }, [selectedFile]);
 
   const onPrev = () => {
     if (!selectedFile) {
